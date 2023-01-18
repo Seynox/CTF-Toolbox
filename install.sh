@@ -19,6 +19,7 @@ sudo cp kali.sh /usr/bin/kali
 # Setup CTF docker
 sudo pacman --needed -S docker xorg-xhost
 sudo usermod -aG docker $USERNAME
-sudo systemctl start docker && sudo docker build -t kali --build-arg NAME=$USERNAME ./
+sudo systemctl enable docker && sudo systemctl start docker
+sudo docker build -t kali --build-arg NAME=$USERNAME ./
 
 echo "Done ! You can delete this folder. Logout to apply all changes"
