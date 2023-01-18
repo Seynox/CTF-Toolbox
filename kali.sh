@@ -20,13 +20,13 @@ function isContainerRunning() {
 }
 
 function runContainer() {
-	/usr/bin/xhost + &&
+	/usr/bin/xhost +local:$USER &&
 		/usr/bin/docker run -it --name kali -u 1000 -w /CTF -e DISPLAY -e XDG_RUNTIME_DIR --net=host -v ~/CTF:/CTF kali &&
-		/usr/bin/xhost -
+		/usr/bin/xhost -local:$USER
 }
 
 function startContainer() {
-	xhost + && docker start -ia kali && xhost -
+	xhost +local:$USER && docker start -ia kali && xhost -local:$USER
 }
 
 function attachShellToContainer() {
